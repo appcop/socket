@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "pm2 start index.js --name socket-cop",
+    "start": "node index.js",
+    "pm2": "pm2 start index.js --name socket-cop",
     "stop": "pm2 stop socket-cop",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
