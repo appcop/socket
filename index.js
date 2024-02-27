@@ -14,6 +14,13 @@ io.on('connection', (socket) => {
     });
 });
 
+app.get('/health', (req, res) => {
+    res.json({
+        success: true,
+        message: 'Running!'
+    });
+});
+
 server.listen(port, () => {
     console.log(`listening on http://app.cop.com:${port}`);
 });
