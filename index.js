@@ -15,10 +15,19 @@ io.on('connection', (socket) => {
 });
 
 app.get('/health', (req, res) => {
-    res.json({
+    const now = new Date();
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+    console.log(`Health check requested from IP address: ${ip} at ${now}`);
+
+    const healthData = {
         success: true,
-        message: 'Running!'
-    });
+        message: 'Application is running smoothly.',
+        serverTime: now,
+        serverUptime: `${process.uptime().toFixed()} seconds`
+    };
+
+    res.json(healthData);
 });
 
 server.listen(port, () => {
